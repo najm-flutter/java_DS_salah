@@ -6,7 +6,6 @@ public class Array1D {
     int length;
 
     Array1D(int size) {
-        // sout.err : for Errors And تسيق any other Print
         arr = new double[size];
         length = 0;
     }
@@ -21,20 +20,107 @@ public class Array1D {
         }
         arr[length++] = item;
     }
-    
 
     public void delete(double item) {
-        
         int index = search(item);
+        System.out.println(index);
         if (index == -1) {
             return;
         }
-        // 0, 1, 3, 4, 5
-
-        for (int i = index; i < arr.length - length - 1; i++) {
+        for (int i = index; i < length - 1; i++) {
             arr[i] = arr[i + 1];
         }
         arr[--length] = 0;
+
+    }
+
+    public void deleteLast(double item) {
+        int index = searchLast(item);
+        if (index == -1) {
+            return;
+        }
+        for (int i = index; i < length - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        arr[--length] = 0;
+    }
+
+    public void deleteAt(int index) {
+
+        if (index >= length) {
+            return;
+        }
+
+        for (int i = index; i < length - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        arr[--length] = 0;
+    }
+
+    public void deleteAll(double item) {
+        int start = 0;
+        for (int i = 0; i < length; i++) {
+            if (arr[i] == item) {
+                continue;
+            }
+            arr[start++] = arr[i];
+
+        }
+        length = start;
+
+    }
+
+    // 1,4,2,4,5,6
+    public void deleteAllSkipFirst(double item) {
+        boolean isFirst = false;
+        int start = 0;
+        for (int i = 0; i < length; i++) {
+            if (arr[i] == item) {
+                if (!isFirst) {
+                    arr[start++] = item;
+                    isFirst = !isFirst;
+                }
+                continue;
+            }
+            arr[start++] = arr[i];
+
+        }
+        length = start;
+
+    }
+
+    public void deleteAllSkipLast(double item) {
+        boolean isLast = false;
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] == item) {
+                if (!isLast) {
+                    isLast = true;
+                    continue;
+                }
+                deleteAt(i);
+            }
+        }
+    }
+
+    public void deleteJump(double item) {
+        boolean delete = false;
+        int start = 0;
+        for (int i = 0; i < length; i++) {
+            if (arr[i] == item) {
+                if (delete) {
+                    delete = !delete;
+                    continue;
+                } else {
+                    arr[start++] = arr[i];
+                    delete = !delete;
+                }
+                continue;
+            }
+            arr[start++] = arr[i];
+
+        }
+        length = start;
 
     }
 
@@ -48,8 +134,18 @@ public class Array1D {
 
     }
 
+    public int searchLast(double item) {
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] == item) {
+                return i;
+            }
+        }
+        return -1;
+
+    }
+
     public void print() {
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < length; i++) {
             System.out.print(arr[i] + ", ");
         }
     }
