@@ -14,11 +14,19 @@ public class Array1D {
         return length == arr.length;
     }
 
-    public void add(int item) {
+    public void add(double item) {
         if (isFull()) {
+            System.err.println("IS full");
             return;
         }
         arr[length++] = item;
+    }
+
+    public void addAll(double[] a) {
+        for (double d : a) {
+            add(d);
+        }
+
     }
 
     public void delete(double item) {
@@ -144,7 +152,15 @@ public class Array1D {
 
     }
 
+    public boolean isEmpty() {
+        return length == 0;
+    }
+
     public void print() {
+        if (isEmpty()) {
+            System.out.println("is Empty");
+            return;
+        }
         for (int i = 0; i < length; i++) {
             System.out.print(arr[i] + ", ");
         }
