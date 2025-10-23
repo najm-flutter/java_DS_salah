@@ -89,6 +89,38 @@ public class Array2D {
 
     }
 
+    public void deletewithShift(double item) {
+
+        // while (find(item))
+        for (int i = 0; i < arr.length; i++) {
+            while (find(arr[i], item))
+                for (int j = 0; j < arr[i].length; j++) {
+
+                    if (arr[i][j] == item) {
+                        for (int j2 = j; j2 < arr[i].length - 1; j2++) {
+                            arr[i][j2] = arr[i][j2 + 1];
+                        }
+                        System.out.println(arr[i][arr[i].length - 1]);
+                        ;
+                        arr[i][arr[i].length - 1] = 0;
+                    }
+
+                }
+
+        }
+
+    }
+
+    public boolean find(double[] arr, double item) {
+        for (int j = 0; j < arr.length; j++) {
+            if (arr[j] == item) {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
     public void deleteAndConvert(double item) {
         double[] arr1 = new double[length];
         int index = -1;
@@ -133,4 +165,42 @@ public class Array2D {
             System.out.println();
         }
     }
+
+    public void nawaf(int item) {
+        int len = search(item);
+        System.out.println(len);
+        if (len == 0) {
+            return;
+        }
+        for (int i = len; i < length; i++) {
+            arr[getRow(i)][getCol(i)] = arr[getRow(i + 1)][getCol(i + 1)];
+        }
+        arr[getRow(length)][getCol(length)] = 0;
+        length--;
+    }
+
+    public int getRow(int size) {
+        return Math.abs(size - 1) / arr.length;
+
+    }
+
+    public int getCol(int size) {
+        return (size - (getRow(size) * arr[0].length)) - 1;
+
+    }
+
+    public int search(int item) {
+        int len = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                len++;
+                if (arr[i][j] == item) {
+                    return len;
+                }
+            }
+        }
+
+        return len;
+    }
+
 }
