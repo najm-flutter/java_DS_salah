@@ -12,13 +12,17 @@ public class DS {
 
         // array1d.deleteAllSkipFirst(4.0);
         // array1d.print();
-        double test[] = { 10, 10, 10, 10, 7, 10, 10, 10, 15 };
-        Array2D array2d = new Array2D(3, 3);
-        array2d.addAll(test);
-        array2d.nawaf(10);
+        // double test[] = { 10, 10, 10, 10, 10, 10, 10, 10, 15 };
+        // Array2D array2d = new Array2D(3, 3);
+        // array2d.addAll(test);
+        // array2d.print();
+        LinkedListDS linkedListDS = new LinkedListDS();
+        linkedListDS.addLast(2);
+        linkedListDS.addLast(5);
+        linkedListDS.addLast(4);
+        linkedListDS.deleteLast();
 
-        array2d.print();
-
+        linkedListDS.display();
         // StackArray stackArray = new StackArray(5);
         // Array1D array1d = new Array1D(9);
         // array1d.addAll(testArrays[0]);
