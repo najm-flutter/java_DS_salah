@@ -1,3 +1,4 @@
+package Array;
 
 public class Array1D {
     // احذف مع التكرار وخل القيمة الي بالمنتصف أو البداية أة او النهاية أو غيره
@@ -31,7 +32,6 @@ public class Array1D {
 
     public void delete(double item) {
         int index = search(item);
-        System.out.println(index);
         if (index == -1) {
             return;
         }

@@ -1,8 +1,12 @@
+package LinkedList;
+
+import PublicClass.Node;
+
 public class LinkedListDS {
-    Node head;
+    public Node head;
     int length;
 
-    LinkedListDS() {
+    public LinkedListDS() {
         head = null;
         length = 0;
     }
@@ -10,10 +14,6 @@ public class LinkedListDS {
     public void addFirst(int data) {
         Node new_node = new Node(data);
         length++;
-        if (head == null) {
-            head = new_node;
-            return;
-        }
         new_node.next = head;
         head = new_node;
 
@@ -36,11 +36,13 @@ public class LinkedListDS {
 
     }
 
-    public void deleteFirst() {
+    public int deleteFirst() {
         if (head == null) {
-            return;
+            return -1;
         }
+        int tmp = head.data;
         head = head.next;
+        return tmp;
     }
 
     public void deleteLast() {
@@ -66,5 +68,27 @@ public class LinkedListDS {
             tmp = tmp.next;
         }
         System.out.print("null");
+    }
+
+    public int getsize(Node v) {
+        if (v == null) {
+            return 0;
+        }
+        return getsize(v.next) + 1;
+    }
+
+    public Node find(double item) {
+
+        Node tmp = head;
+        if (tmp == null) {
+            return tmp;
+        }
+        do {
+            if (tmp.data == item) {
+                return tmp;
+            }
+            tmp = tmp.next;
+        } while (tmp != null);
+        return tmp;
     }
 }

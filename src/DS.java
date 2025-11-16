@@ -1,3 +1,4 @@
+import LinkedList.LinkedListDS;
 
 public class DS {
     public static void main(String[] args) throws Exception {
@@ -17,10 +18,14 @@ public class DS {
         // array2d.addAll(test);
         // array2d.print();
         LinkedListDS linkedListDS = new LinkedListDS();
-        linkedListDS.addLast(2);
         linkedListDS.addLast(5);
+        linkedListDS.addLast(3);
         linkedListDS.addLast(4);
-        linkedListDS.deleteLast();
+        linkedListDS.addLast(7);
+
+        System.out.println(linkedListDS.getsize(linkedListDS.head));
+        System.out.println();
+        ;
 
         linkedListDS.display();
         // StackArray stackArray = new StackArray(5);
