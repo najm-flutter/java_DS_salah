@@ -7,17 +7,17 @@ enum PRINT_TYPE {
 }
 
 public class Stack {
-    int top;
-    double arr[];
+    private int top;
+    int arr[];
 
     Stack() {
-        arr = new double[10];
+        arr = new int[10];
         top = -1;
     }
 
     Stack(int size) {
         top = -1;
-        arr = new double[size];
+        arr = new int[size];
     }
 
     boolean isEmpty() {
@@ -28,7 +28,7 @@ public class Stack {
         return top == arr.length - 1;
     }
 
-    public void push(double item) {
+    public void push(int item) {
         if (isFull()) {
             System.out.println("satckOverFlow");
             return;
@@ -36,7 +36,7 @@ public class Stack {
         arr[++top] = item;
     }
 
-    public double pop() {
+    public int pop() {
         if (isEmpty()) {
             System.out.println("empty");
             return -1;
@@ -63,6 +63,13 @@ public class Stack {
         }
     }
 
+    public int peek() {
+        if (isEmpty()) {
+            return -1;
+        }
+        return arr[top];
+    }
+
     private void print() {
         for (int i = top; i >= 0; i--) {
             System.out.print(arr[top] + ",");
@@ -84,5 +91,30 @@ public class Stack {
         printRE(top2 - 1);
         System.out.print(arr[top2] + ",");
 
+    }
+
+    public void deleteItem(int item) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == item) {
+                Stack stack = new Stack(arr.length);
+                while (!isEmpty()) {
+                    if (peek() == arr[i]) {
+                        pop();
+                        continue;
+                    }
+                    stack.push(pop());
+                }
+                while (!stack.isEmpty()) {
+                    push(stack.pop());
+                }
+            }
+        }
+    }
+
+    public int getSize() {
+        if (isEmpty()) {
+            return 0;
+        }
+        return top + 1;
     }
 }

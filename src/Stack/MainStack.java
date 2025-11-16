@@ -1,6 +1,9 @@
 package Stack;
 
 import java.util.Scanner;
+
+import PublicClass.Messages;
+
 import java.util.HashMap;
 
 enum STACK_OPERATION {
@@ -8,13 +11,19 @@ enum STACK_OPERATION {
     DYNAMIC_STACK,
     PUSH,
     POP,
-    DISPLAY
+    DISPLAY,
+    DEFAULT
 
 }
 
 public class MainStack {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        run(in);
+    }
+
+    public static void run(Scanner in) {
+
         HashMap<Integer, STACK_OPERATION> stackType = new HashMap<>(), options = new HashMap<>();
         stackType.put(1, STACK_OPERATION.STATIC_STACK);
         stackType.put(2, STACK_OPERATION.DYNAMIC_STACK);
@@ -22,27 +31,24 @@ public class MainStack {
         options.put(1, STACK_OPERATION.PUSH);
         options.put(2, STACK_OPERATION.POP);
         options.put(3, STACK_OPERATION.DISPLAY);
-        System.out.println("""
-                 choise Type of Stack
-                 1-Static Stack
-                 2-Dynamic Stack
-                 0-Exit
-                """);
-        int choise;
-        while ((choise = in.nextInt()) != 0) {
 
-            switch (stackType.get(choise)) {
+        int choose;
+        printMenuOptions();
+        while ((choose = in.nextInt()) != 0) {
+
+            switch (stackType.getOrDefault(choose, STACK_OPERATION.DEFAULT)) {
                 case STATIC_STACK:
-                    static_stack(in, options);
+                    staticStack(in, options);
                     break;
                 case DYNAMIC_STACK:
-                    dyanmic_stack(in, options);
+                    dynamicStack(in, options);
                     break;
                 default:
+                    Messages.printInvalidOptionMessage();
                     break;
             }
             System.out.println("""
-                     choise Type of Stack
+                     choose Type of Stack
                      1-Static Stack
                      2-Dynamic Stack
                      0-Exit
@@ -52,74 +58,51 @@ public class MainStack {
         in.close();
     }
 
-    static void static_stack(Scanner in, HashMap<Integer, STACK_OPERATION> options) {
-        System.out.println("ENter size of Stack");
-        int size = in.nextInt();
+    static void staticStack(Scanner in, HashMap<Integer, STACK_OPERATION> options) {
+        System.out.println("Enter Size Of Stack :");
+        int size;
+        if ((size = in.nextInt()) <= 0) {
+            Messages.printSizeOut();
+            return;
+        }
+
         Stack stack = new Stack(size);
-        System.out.println("""
-                \nchoise Type of Stack
-                     1-PUSH
-                     2-PUB
-                     3-Display
-                     0-EXit\n
-                    """);
-        int choise;
-        while ((choise = in.nextInt()) != 0) {
-            STACK_OPERATION operation;
-            try {
-                operation = options.get(choise);
-            } catch (Exception e) {
-                System.err.println("error");
-                continue;
-            }
-            switch (operation) {
+        printStackOptions();
+        int choose;
+        while ((choose = in.nextInt()) != 0) {
+
+            switch (options.getOrDefault(choose, STACK_OPERATION.DEFAULT)) {
                 case PUSH:
-                    System.out.print("inter element:");
-                    stack.push(in.nextInt());
+                    System.out.print("Enter element:");
+                    while (!stack.isFull()) {
+                        System.out.print("Enter Element " + (stack.getSize() + 1) + ": ");
+                        stack.push(in.nextInt());
+                    }
                     break;
                 case POP:
                     System.out.print(stack.pop());
                     break;
-
                 case DISPLAY:
                     stack.printType(PRINT_TYPE.PRINTRERESIVE);
                     break;
                 default:
                     break;
             }
-            System.out.println("""
-                    \nchoise Type of Stack
-                     1-PUSH
-                     2-PUB
-                     3-Display
-                     0-EXit\n
-                        """);
+            printStackOptions();
 
         }
 
     }
 
-    static void dyanmic_stack(Scanner in, HashMap<Integer, STACK_OPERATION> options) {
+    static void dynamicStack(Scanner in, HashMap<Integer, STACK_OPERATION> options) {
         StackLinked stack = new StackLinked();
-        System.out.println("""
-                \nchoise Type of Stack
-                     1-PUSH
-                     2-PUB
-                     3-Display
-                     0-EXit\n
-                    """);
-        int choise;
-        while ((choise = in.nextInt()) != 0) {
-            STACK_OPERATION operation;
-            try {
-                operation = options.get(choise);
-            } catch (Exception e) {
-                System.err.println("error");
-                continue;
-            }
-            switch (operation) {
+        printStackOptions();
+        int choose;
+        while ((choose = in.nextInt()) != 0) {
+
+            switch (options.getOrDefault(choose, STACK_OPERATION.DEFAULT)) {
                 case PUSH:
-                    System.out.print("inter element:");
+                    System.out.print("Enter Element:");
                     stack.push(in.nextInt());
                     break;
                 case POP:
@@ -132,15 +115,28 @@ public class MainStack {
                 default:
                     break;
             }
-            System.out.println("""
-                    \nchoise Type of Stack
-                     1-PUSH
-                     2-PUB
-                     3-Display
-                     0-EXit\n
-                        """);
+            printStackOptions();
 
         }
 
+    }
+
+    public static void printMenuOptions() {
+        System.out.println("""
+                 Choose Type of Stack :
+                 1. Static Stack
+                 2. Dynamic Stack
+                 0. Exit
+                """);
+    }
+
+    public static void printStackOptions() {
+        System.out.println("""
+                \nchoose Type of Stack
+                     1. Push
+                     2. Pop
+                     3. Display
+                     0. EXit\n
+                    """);
     }
 }
