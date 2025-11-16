@@ -8,6 +8,7 @@ public class MainArray {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         run(in);
+        in.close();
     }
 
     public static void run(Scanner in) {

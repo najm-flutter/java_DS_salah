@@ -20,6 +20,7 @@ public class MainStack {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         run(in);
+        in.close();
     }
 
     public static void run(Scanner in) {
@@ -32,11 +33,11 @@ public class MainStack {
         options.put(2, STACK_OPERATION.POP);
         options.put(3, STACK_OPERATION.DISPLAY);
 
-        int choose;
+        int choice;
         printMenuOptions();
-        while ((choose = in.nextInt()) != 0) {
+        while ((choice = in.nextInt()) != 0) {
 
-            switch (stackType.getOrDefault(choose, STACK_OPERATION.DEFAULT)) {
+            switch (stackType.getOrDefault(choice, STACK_OPERATION.DEFAULT)) {
                 case STATIC_STACK:
                     staticStack(in, options);
                     break;
@@ -48,7 +49,7 @@ public class MainStack {
                     break;
             }
             System.out.println("""
-                     choose Type of Stack
+                     choice Type of Stack
                      1-Static Stack
                      2-Dynamic Stack
                      0-Exit
@@ -68,10 +69,10 @@ public class MainStack {
 
         Stack stack = new Stack(size);
         printStackOptions();
-        int choose;
-        while ((choose = in.nextInt()) != 0) {
+        int choice;
+        while ((choice = in.nextInt()) != 0) {
 
-            switch (options.getOrDefault(choose, STACK_OPERATION.DEFAULT)) {
+            switch (options.getOrDefault(choice, STACK_OPERATION.DEFAULT)) {
                 case PUSH:
                     System.out.print("Enter element:");
                     while (!stack.isFull()) {
@@ -97,10 +98,10 @@ public class MainStack {
     static void dynamicStack(Scanner in, HashMap<Integer, STACK_OPERATION> options) {
         StackLinked stack = new StackLinked();
         printStackOptions();
-        int choose;
-        while ((choose = in.nextInt()) != 0) {
+        int choice;
+        while ((choice = in.nextInt()) != 0) {
 
-            switch (options.getOrDefault(choose, STACK_OPERATION.DEFAULT)) {
+            switch (options.getOrDefault(choice, STACK_OPERATION.DEFAULT)) {
                 case PUSH:
                     System.out.print("Enter Element:");
                     stack.push(in.nextInt());
@@ -123,7 +124,7 @@ public class MainStack {
 
     public static void printMenuOptions() {
         System.out.println("""
-                 Choose Type of Stack :
+                 choice Type of Stack :
                  1. Static Stack
                  2. Dynamic Stack
                  0. Exit
@@ -132,7 +133,7 @@ public class MainStack {
 
     public static void printStackOptions() {
         System.out.println("""
-                \nchoose Type of Stack
+                \nchoice Type of Stack
                      1. Push
                      2. Pop
                      3. Display
