@@ -5,7 +5,7 @@ public class CQueue {
     int[] elements;
 
     public CQueue(int size) {
-        elements = new int[size] ;
+        elements = new int[size];
         front = rear = 0;
     }
 
@@ -37,28 +37,27 @@ public class CQueue {
         return tmp;
     }
 
-    public void  display(){
-        if (isEmpty()){
+    public void display() {
+        if (isEmpty()) {
             System.out.println("Is Empty");
             return;
         }
-        for (int i = front; i != rear ; i= (i+1)%elements.length) {
-            System.out.print(elements[i]+",");
+        for (int i = front; i != rear; i = (i + 1) % elements.length) {
+            System.out.print(elements[i] + ",");
         }
     }
 
-
-    public void deleteitem(int item){
-        int r = front ;
-        for (int i = front; i != rear ; i=(i+1) %elements.length) {
-            if (elements[i] == item ){
-                 continue;
+    public void deleteItem(int item) {
+        int r = front;
+        for (int i = front; i != rear; i = (i + 1) % elements.length) {
+            if (elements[i] == item) {
+                continue;
             }
-            elements[r] = elements[i] ;
-            r = (r+1)%elements.length ;
+            elements[r] = elements[i];
+            r = (r + 1) % elements.length;
 
         }
-        rear= r ;
+        rear = r;
     }
 
 }

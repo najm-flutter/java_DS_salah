@@ -17,7 +17,7 @@ public class Queue {
         return rear == elements.length - 1;
     }
 
-    public void EnQueue(int element) {
+    public void enQueue(int element) {
         if (isFull()) {
             System.out.print("is Full");
             return;
@@ -50,6 +50,12 @@ public class Queue {
 
     public int getSize() {
         return (front - rear) + 1;
+    }
+
+    public void display() {
+        for (int i = front; i <= rear; i++) {
+            System.out.print(elements[i] + ",");
+        }
     }
 
     public void deleteItem(int val) {
