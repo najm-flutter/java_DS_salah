@@ -1,3 +1,4 @@
+package others;
 public class MyStack {
     int top = -1;
     int[] arr;

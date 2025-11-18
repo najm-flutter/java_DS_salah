@@ -1,3 +1,4 @@
+package others;
 public class MyQueue {
 
     int top = -1;

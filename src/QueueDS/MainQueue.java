@@ -1,4 +1,4 @@
-package Queue;
+package QueueDS;
 
 import PublicClass.Messages;
 
@@ -20,9 +20,10 @@ enum QUEUE_TYPES {
     DEFAULT
 }
 
-public class QueueMain {
+public class MainQueue {
     public static void main(String[] args) {
-
+        Scanner in = new Scanner(System.in);
+        run(in);
     }
 
     public static void run(Scanner in) {
@@ -53,11 +54,12 @@ public class QueueMain {
                     Messages.printInvalidOptionMessage();
                     break;
             }
+            printMenuOptions();
         }
     }
 
     private static void queue(Scanner in, HashMap<Integer, QUEUE_OPERATIONS> options) {
-        System.out.println("Enter Size Of Stack :");
+        System.out.println("Enter Size Of Queue :");
         int size;
         if ((size = in.nextInt()) <= 0) {
             Messages.printSizeOut();
@@ -135,7 +137,7 @@ public class QueueMain {
     private static void QueueLinked(Scanner in, HashMap<Integer, QUEUE_OPERATIONS> options) {
 
         QueueLinked cQueueOne = new QueueLinked();
-        printCQueueMenu();
+        printQueueLinkedMenu();
         int choice;
         while ((choice = in.nextInt()) != 0) {
 
@@ -154,15 +156,25 @@ public class QueueMain {
                     Messages.printInvalidOptionMessage();
                     break;
             }
-            printCQueueMenu();
+            printQueueLinkedMenu();
 
         }
 
     }
 
+    private static void printQueueLinkedMenu() {
+        System.out.println("""
+                \nChoice Operation
+                     1. ENQUEUE
+                     2. DEQUEUE
+                     3. DISPLAY
+                     0. Exit
+                    """);
+    }
+
     private static void printCQueueMenu() {
         System.out.println("""
-                Choice Type of Queue
+                \nChoice Operation
                      1. ENQUEUE
                      2. DEQUEUE
                      3. DISPLAY
@@ -174,7 +186,7 @@ public class QueueMain {
 
     public static void printQueueMenu() {
         System.out.println("""
-                Choice Type of Queue
+                \nChoice Operation
                      1. ENQUEUE
                      2. DEQUEUE
                      3. DISPLAY
@@ -187,7 +199,7 @@ public class QueueMain {
 
     private static void printMenuOptions() {
         System.out.println("""
-                Choice Type of Queue
+                \nChoice Type of Queue
                      1. Queue
                      2. CQueue
                      3. QueueLinked

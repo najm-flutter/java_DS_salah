@@ -1,4 +1,4 @@
-package Queue;
+package QueueDS;
 
 public class Queue {
     int[] elements;
@@ -40,7 +40,7 @@ public class Queue {
         return tmp;
     }
 
-    public int getReare() {
+    public int peek() {
         if (isEmpty()) {
             return -1;
         }

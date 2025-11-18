@@ -1,4 +1,4 @@
-package Queue;
+package QueueDS;
 
 public class CQueue {
     int front, rear;
@@ -35,6 +35,14 @@ public class CQueue {
         int tmp = elements[front];
         front = (front + 1) % elements.length;
         return tmp;
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Is Empty");
+            return -1;
+        }
+        return elements[rear];
     }
 
     public void display() {

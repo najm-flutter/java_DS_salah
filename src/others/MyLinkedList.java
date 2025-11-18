@@ -1,3 +1,4 @@
+package others;
 public class MyLinkedList {
     Node head;
 

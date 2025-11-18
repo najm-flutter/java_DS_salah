@@ -1,4 +1,4 @@
-package Queue;
+package QueueDS;
 
 import PublicClass.Node;
 
@@ -29,6 +29,15 @@ public class QueueLinked {
         int tmp = front.data;
         front = front.next;
         return tmp;
+    }
+
+    public int peek() {
+        if (rear == null) {
+            System.out.println("Is Empty");
+            return -1;
+        }
+
+        return front.data;
     }
 
     public void display() {
