@@ -1,11 +1,11 @@
 package Queue;
 
 public class Queue {
-    char[] elements;
+    int[] elements;
     int front, rear;
 
     Queue(int size) {
-        elements = new char[size];
+        elements = new int[size];
         front = rear = -1;
     }
 
@@ -17,7 +17,7 @@ public class Queue {
         return rear == elements.length - 1;
     }
 
-    public void EnQueue(char element) {
+    public void EnQueue(int element) {
         if (isFull()) {
             System.out.print("is Full");
             return;
@@ -28,21 +28,21 @@ public class Queue {
         elements[++rear] = element;
     }
 
-    public char deQueue() {
+    public int deQueue() {
         if (isEmpty()) {
             System.out.print("is Empty");
-            return '-';
+            return -1;
         }
-        char tmp = elements[front++];
+        int tmp = elements[front++];
         if (front > rear) {
             front = rear = -1;
         }
         return tmp;
     }
 
-    public char getReare() {
+    public int getReare() {
         if (isEmpty()) {
-            return '-';
+            return -1;
         }
 
         return elements[rear];
@@ -52,13 +52,18 @@ public class Queue {
         return (front - rear) + 1;
     }
 
-    public void deleteItem(char val) {
+    public void deleteItem(int val) {
         if (isEmpty()) {
             System.out.println("is Empty\n");
+            return;
         }
 
-        for (int i = front + 1; i <= rear; i++) {
+        for (int i = front; i <= rear; i++) {
             if (elements[i] == val) {
+                for (int j = i; j < rear; j++) {
+                    elements[j] = elements[j + 1];
+                }
+                elements[rear--] = 0;
 
             }
         }
