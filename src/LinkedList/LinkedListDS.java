@@ -74,21 +74,70 @@ public class LinkedListDS {
         if (v == null) {
             return 0;
         }
-        return getsize(v.next) + 1;
+        return 1 + getsize(v.next);
     }
 
-    public Node find(double item) {
+    public void deleteAfter(double data) {
+
+        Node item = find(data);
+        if (item == null) {
+            System.out.println("item Not Found");
+            return;
+        }
+        if (item.next == null) {
+            System.out.println("the after is Empty");
+        }
+        Node tmp = item.next;
+        item.next = item.next.next;
+        tmp.next = null;
+
+    }
+
+    public Node find(double data) {
+        Node i = head;
+        for (i = head; i != null; i = i.next) {
+            if (i.data == data) {
+                return i;
+            }
+        }
+        return i;
+    }
+
+    public void deleteAt(int index) {
+        if (head == null) {
+            System.out.println("is Empty");
+            return;
+        }
+        if (index < 0 || index > length - 1) {
+
+            System.out.println("error in index");
+            return;
+        }
+
+        if (index == 0) {
+            head = head.next;
+            return;
+
+        }
 
         Node tmp = head;
-        if (tmp == null) {
-            return tmp;
-        }
-        do {
-            if (tmp.data == item) {
-                return tmp;
+        int startIndex = 0;
+        while (tmp != null) {
+            if (startIndex < index - 1) {
+                tmp = tmp.next;
+                startIndex++;
+            } else {
+                break;
             }
-            tmp = tmp.next;
-        } while (tmp != null);
-        return tmp;
+
+        }
+        if (tmp == null) {
+            System.out.println("item Not found");
+            return;
+        }
+        Node tmp2 = tmp.next;
+        tmp.next = tmp.next.next;
+        tmp2.next = null;
+
     }
 }

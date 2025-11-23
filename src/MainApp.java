@@ -16,6 +16,7 @@ public class MainApp {
         options.put(1, INSERT_TYPES.ARRAY);
         options.put(2, INSERT_TYPES.STACK);
         options.put(3, INSERT_TYPES.QUEUE);
+        options.put(4, INSERT_TYPES.LINKED_LIST);
 
         Scanner in = new Scanner(System.in);
         int choice;
@@ -31,6 +32,8 @@ public class MainApp {
                 case QUEUE:
                     QueueDS.MainQueue.run(in);
                     break;
+                case LINKED_LIST:
+                    LinkedList.MainLinkedList.run(in);
                 default:
                     Messages.printInvalidOptionMessage();
                     break;
@@ -47,6 +50,7 @@ public class MainApp {
         System.out.println("1  Array Operations");
         System.out.println("2  Stack Operations");
         System.out.println("3  Queue Operations");
+        System.out.println("4  LinkedList Operations");
 
         System.out.println("0  Exit Program");
         System.out.println("==============================");

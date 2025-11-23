@@ -48,12 +48,7 @@ public class MainStack {
                     Messages.printInvalidOptionMessage();
                     break;
             }
-            System.out.println("""
-                     choice Type of Stack
-                     1-Static Stack
-                     2-Dynamic Stack
-                     0-Exit
-                    """);
+            printMenuOptions();
 
         }
         in.close();
