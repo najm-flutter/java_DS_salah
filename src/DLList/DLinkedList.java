@@ -177,7 +177,27 @@ public class DLinkedList {
 
     }
 
-    public void deleteBefore(int id) {
+    public void deleteBefore(String name) {
+        if (isEmpty()) {
+            return;
+        }
+        DNode node2 = find(name);
+        if (node2 == null) {
+            return;
+        }
+
+        if (node2.getprev() == null) {
+            return;
+        }
+        DNode tmp = node2.getprev();
+        if (tmp.getprev() == null) {
+            deleteFirst();
+            return;
+        }
+        tmp.getprev().setNext(tmp.getNext());
+         tmp.getNext().setprev(tmp.getprev());
+        tmp.setNext(null);
+        tmp.setprev(null);
 
     }
 

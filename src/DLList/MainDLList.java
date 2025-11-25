@@ -10,7 +10,7 @@ public class MainDLList {
         dLinkedList.addAfter(new DNode(new Student("d")), "GADATY");
         dLinkedList.addBefor(new DNode(new Student("d")), "d");
         dLinkedList.addAt(new DNode(new Student("GGG")), 0);
-        dLinkedList.deleteAt(6);
+        dLinkedList.deleteBefore("Souod");
 
         dLinkedList.display();
     }
