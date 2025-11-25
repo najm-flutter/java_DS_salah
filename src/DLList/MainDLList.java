@@ -9,6 +9,8 @@ public class MainDLList {
         dLinkedList.addLast(new DNode(new Student("GADATY")));
         dLinkedList.addAfter(new DNode(new Student("d")), "GADATY");
         dLinkedList.addBefor(new DNode(new Student("d")), "d");
+        dLinkedList.addAt(new DNode(new Student("GGG")), 0);
+        dLinkedList.deleteAt(6);
 
         dLinkedList.display();
     }

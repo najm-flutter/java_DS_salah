@@ -23,6 +23,16 @@ public class DLinkedList {
         Head = n;
     }
 
+    public void deleteFirst() {
+        if (isEmpty()) {
+            return;
+        }
+        DNode tmp = Head;
+        Head = Head.getNext();
+        Head.setprev(null);
+        tmp.setNext(null);
+    }
+
     public void addLast(DNode m) {
         if (isEmpty()) {
             Head = Tail = m;
@@ -95,11 +105,67 @@ public class DLinkedList {
     }
 
     public void addAt(DNode n, int pos) {
+        if (isEmpty()) {
+            return;
+        }
+        if (pos < 0) {
+            return;
 
+        }
+        if (pos == 0) {
+            addFirst(n);
+            return;
+        }
+        DNode tmp = Head;
+        int counter = 0;
+        while (tmp != null) {
+            if (counter <= pos - 1) {
+                tmp = tmp.getNext();
+                counter++;
+            } else
+                break;
+        }
+        if (tmp == null) {
+            return;
+        }
+
+        n.setNext(tmp);
+        tmp.getprev().setNext(n);
+        n.setprev(tmp.getprev());
+        tmp.setprev(n);
     }
 
     public void deleteAt(int pos) {
+        if (isEmpty()) {
+            return;
+        }
+        if (pos < 0) {
+            return;
 
+        }
+        if (pos == 0) {
+            deleteFirst();
+            return;
+        }
+        DNode tmp = Head;
+        int counter = 0;
+        while (tmp != null) {
+            if (counter <= pos - 1) {
+                tmp = tmp.getNext();
+                counter++;
+            } else
+                break;
+        }
+        if (tmp == null) {
+            return;
+        }
+
+        tmp.getprev().setNext(tmp.getNext());
+        if (tmp.getNext() != null) {
+            tmp.getNext().setprev(tmp.getprev());
+        }
+        tmp.setNext(null);
+        tmp.setprev(null);
     }
 
     // delete node and two after
