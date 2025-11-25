@@ -25,6 +25,7 @@ public class DLinkedList {
 
     public void deleteFirst() {
         if (isEmpty()) {
+            System.out.println("The list is empty");
             return;
         }
         DNode tmp = Head;
@@ -35,6 +36,7 @@ public class DLinkedList {
 
     public void deleteLast() {
         if (isEmpty()) {
+            System.out.println("The list is empty");
             return;
         }
         DNode tmp = Tail;
@@ -67,6 +69,7 @@ public class DLinkedList {
 
     public void addAfter(DNode mn, String id) {
         if (isEmpty()) {
+            System.out.println("The list is empty");
             return;
         }
         DNode res = find(id);
@@ -83,7 +86,7 @@ public class DLinkedList {
             }
             return;
         }
-        System.out.println("the element is not found");
+        System.out.println("The element is not found");
     }
 
     public void display() {
@@ -97,10 +100,12 @@ public class DLinkedList {
 
     public void addBefor(DNode node, String name) {
         if (isEmpty()) {
+            System.out.println("The list is empty");
             return;
         }
         DNode node2 = find(name);
         if (node2 == null) {
+            System.out.println("The element is not found");
             return;
         }
 
@@ -117,6 +122,7 @@ public class DLinkedList {
 
     public void addAt(DNode n, int pos) {
         if (isEmpty()) {
+            System.out.println("The list is empty");
             return;
         }
         if (pos < 0) {
@@ -137,6 +143,7 @@ public class DLinkedList {
                 break;
         }
         if (tmp == null) {
+            addLast(n);
             return;
         }
 
@@ -148,6 +155,7 @@ public class DLinkedList {
 
     public void deleteAt(int pos) {
         if (isEmpty()) {
+            System.out.println("The list is empty");
             return;
         }
         if (pos < 0) {
@@ -168,6 +176,7 @@ public class DLinkedList {
                 break;
         }
         if (tmp == null) {
+            System.out.println("The position is out of the list bounds");
             return;
         }
 
@@ -179,17 +188,14 @@ public class DLinkedList {
         tmp.setprev(null);
     }
 
-    // delete node and two after
-    public void deleteNode(int pos) {
-
-    }
-
     public void deleteAfter(String name) {
         if (isEmpty()) {
+            System.out.println("The list is empty");
             return;
         }
         DNode node2 = find(name);
         if (node2 == null) {
+            System.out.println("The element is not found");
             return;
         }
 
@@ -209,10 +215,12 @@ public class DLinkedList {
 
     public void deleteBefore(String name) {
         if (isEmpty()) {
+            System.out.println("The list is empty");
             return;
         }
         DNode node2 = find(name);
         if (node2 == null) {
+            System.out.println("The element is not found");
             return;
         }
 
@@ -228,6 +236,11 @@ public class DLinkedList {
         tmp.getNext().setprev(tmp.getprev());
         tmp.setNext(null);
         tmp.setprev(null);
+
+    }
+
+    // delete node and two after
+    public void deleteNode(int pos) {
 
     }
 
