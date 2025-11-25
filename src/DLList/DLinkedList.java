@@ -51,8 +51,10 @@ public class DLinkedList {
         DNode res = find(id);
         if (res != null) {
             mn.setprev(res);
-            mn.setNext(res.getNext());
-            mn.getNext().setprev(mn);
+            if (res.getNext() != null) {
+                mn.setNext(res.getNext());
+                mn.getNext().setprev(mn);
+            }
             res.setNext(mn);
             return;
         }
@@ -68,8 +70,8 @@ public class DLinkedList {
         System.out.print("Null");
     }
 
-    public void addBefor() {
-
+    public void addBefor(DNode node ,  String name) {
+         
     }
 
     public void addAt(DNode n, int pos) {
