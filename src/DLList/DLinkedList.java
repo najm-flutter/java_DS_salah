@@ -33,6 +33,17 @@ public class DLinkedList {
         tmp.setNext(null);
     }
 
+    public void deleteLast() {
+        if (isEmpty()) {
+            return;
+        }
+        DNode tmp = Tail;
+        Tail = Tail.getprev();
+        Tail.setNext(null);
+        tmp.setprev(null);
+
+    }
+
     public void addLast(DNode m) {
         if (isEmpty()) {
             Head = Tail = m;
@@ -173,8 +184,27 @@ public class DLinkedList {
 
     }
 
-    public void deleteAfter(int id) {
+    public void deleteAfter(String name) {
+        if (isEmpty()) {
+            return;
+        }
+        DNode node2 = find(name);
+        if (node2 == null) {
+            return;
+        }
 
+        if (node2.getNext() == null) {
+            return;
+        }
+        DNode tmp = node2.getNext();
+        if (tmp.getNext() == null) {
+            deleteLast();
+            return;
+        }
+        tmp.getprev().setNext(tmp.getNext());
+        tmp.getNext().setprev(tmp.getprev());
+        tmp.setNext(null);
+        tmp.setprev(null);
     }
 
     public void deleteBefore(String name) {
@@ -195,7 +225,7 @@ public class DLinkedList {
             return;
         }
         tmp.getprev().setNext(tmp.getNext());
-         tmp.getNext().setprev(tmp.getprev());
+        tmp.getNext().setprev(tmp.getprev());
         tmp.setNext(null);
         tmp.setprev(null);
 
