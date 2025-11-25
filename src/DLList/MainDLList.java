@@ -8,6 +8,8 @@ public class MainDLList {
         dLinkedList.addLast(new DNode(new Student("Souod")));
         dLinkedList.addLast(new DNode(new Student("GADATY")));
         dLinkedList.addAfter(new DNode(new Student("d")), "GADATY");
+        dLinkedList.addBefor(new DNode(new Student("d")), "d");
+
         dLinkedList.display();
     }
 }

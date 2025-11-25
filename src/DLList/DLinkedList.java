@@ -50,12 +50,16 @@ public class DLinkedList {
         }
         DNode res = find(id);
         if (res != null) {
-            mn.setprev(res);
+
             if (res.getNext() != null) {
+                mn.setprev(res);
                 mn.setNext(res.getNext());
                 mn.getNext().setprev(mn);
+                res.setNext(mn);
+
+            } else {
+                addLast(mn);
             }
-            res.setNext(mn);
             return;
         }
         System.out.println("the element is not found");
@@ -70,8 +74,24 @@ public class DLinkedList {
         System.out.print("Null");
     }
 
-    public void addBefor(DNode node ,  String name) {
-         
+    public void addBefor(DNode node, String name) {
+        if (isEmpty()) {
+            return;
+        }
+        DNode node2 = find(name);
+        if (node2 == null) {
+            return;
+        }
+
+        if (node2.getprev() != null) {
+            node.setNext(node2);
+            node2.getprev().setNext(node);
+            node.setprev(node2.getprev());
+            node2.setprev(node);
+        } else {
+            addFirst(node);
+        }
+
     }
 
     public void addAt(DNode n, int pos) {
