@@ -1,4 +1,5 @@
 package Array;
+
 public class Array2D {
 
     // احذف مع التكرار وخل القيمة الي بالمنتصف أو البداية أة او النهاية أو غيره
@@ -21,22 +22,13 @@ public class Array2D {
     }
 
     public void add(double item) {
-        // length -> row ,col
-        // 0 -> 0,0
-        // 1 -> 0,1
-        // 2 -> 0,2
-        // 3 , 1 , 0
-
-        // row = abs(length)/2
-        // col = (length - row*cols)- 1
 
         if (isFull()) {
             return;
         }
-        int row = (length) / arr[0].length;
         length++;
-        System.out.println(row);
-        int col = (length - (row * arr[0].length)) - 1;
+        int row = (length - 1) / arr[0].length;
+        int col = (length - 1) % arr[0].length;
         arr[row][col] = item;
     }
 
@@ -92,7 +84,6 @@ public class Array2D {
 
     public void deletewithShift(double item) {
 
-        // while (find(item))
         for (int i = 0; i < arr.length; i++) {
             while (find(arr[i], item))
                 for (int j = 0; j < arr[i].length; j++) {
@@ -168,11 +159,17 @@ public class Array2D {
     }
 
     public void nawaf(int item) {
+        if (arr.length == 0) {
+            System.out.println("array is empty");
+            return;
+        }
         int len = search(item);
         System.out.println(len);
         if (len == 0) {
+            System.out.println("element not found");
             return;
         }
+
         for (int i = len; i < length; i++) {
             arr[getRow(i)][getCol(i)] = arr[getRow(i + 1)][getCol(i + 1)];
         }
@@ -182,11 +179,10 @@ public class Array2D {
 
     public int getRow(int size) {
         return Math.abs(size - 1) / arr.length;
-
     }
 
     public int getCol(int size) {
-        return (size - (getRow(size) * arr[0].length)) - 1;
+        return (size - 1) % arr[0].length;
 
     }
 
