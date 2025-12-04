@@ -13,8 +13,7 @@ enum QUEUE_OPERATIONS {
     DEFAULT
 }
 
-public class MainQueue {
-
+public class MainQueueLinked {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         run(in);
@@ -25,46 +24,34 @@ public class MainQueue {
         options.put(1, QUEUE_OPERATIONS.ENQUEUE);
         options.put(2, QUEUE_OPERATIONS.DEQUEUE);
         options.put(3, QUEUE_OPERATIONS.DISPLAY);
-        options.put(4, QUEUE_OPERATIONS.DELETE_ITEM);
 
-        System.out.println("Enter Size Of Queue :");
-        int size;
-        if ((size = in.nextInt()) <= 0) {
-            Messages.printSizeOut();
-            return;
-        }
-
-        Queue queueOne = new Queue(size);
-        printQueueMenu();
+        QueueLinked cQueueOne = new QueueLinked();
+        printQueueLinkedMenu();
         int choice;
         while ((choice = in.nextInt()) != 0) {
 
             switch (options.getOrDefault(choice, QUEUE_OPERATIONS.DEFAULT)) {
                 case ENQUEUE:
                     System.out.print("Enter item: ");
-                    queueOne.enQueue(in.nextInt());
+                    cQueueOne.enQueue(in.nextInt());
                     break;
                 case DEQUEUE:
-                    System.out.print(queueOne.deQueue());
+                    System.out.print(cQueueOne.deQueue());
                     break;
                 case DISPLAY:
-                    queueOne.display();
-                    break;
-                case DELETE_ITEM:
-                    System.out.print("Enter item To delete: ");
-                    queueOne.deleteItem(in.nextInt());
+                    cQueueOne.display();
                     break;
                 default:
                     Messages.printInvalidOptionMessage();
                     break;
             }
-            printQueueMenu();
+            printQueueLinkedMenu();
 
         }
 
     }
 
-    private static void printQueueMenu() {
-        System.out.println("\nChoice Operation\n 1. ENQUEUE\n 2. DEQUEUE\n 3. DISPLAY\n 4. DELETE_ITEM\n 0. EXit\n");
+    private static void printQueueLinkedMenu() {
+        System.out.println("\nChoice Operation\n 1. ENQUEUE\n 2. DEQUEUE\n 3. DISPLAY\n 0. Exit\n");
     }
 }

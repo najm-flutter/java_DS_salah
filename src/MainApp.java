@@ -7,6 +7,8 @@ enum INSERT_TYPES {
     LINKED_LIST,
     STACK,
     QUEUE,
+    CQUEUE,
+    QUEUELINKED,
     DEFUALT
 }
 
@@ -16,7 +18,9 @@ public class MainApp {
         options.put(1, INSERT_TYPES.ARRAY);
         options.put(2, INSERT_TYPES.STACK);
         options.put(3, INSERT_TYPES.QUEUE);
-        options.put(4, INSERT_TYPES.LINKED_LIST);
+        options.put(4, INSERT_TYPES.CQUEUE);
+        options.put(5, INSERT_TYPES.QUEUELINKED);
+        options.put(6, INSERT_TYPES.LINKED_LIST);
 
         Scanner in = new Scanner(System.in);
         int choice;
@@ -31,6 +35,12 @@ public class MainApp {
                     break;
                 case QUEUE:
                     QueueDS.MainQueue.run(in);
+                    break;
+                case CQUEUE:
+                    QueueDS.MainCQueue.run(in);
+                    break;
+                case QUEUELINKED:
+                    QueueDS.MainQueueLinked.run(in);
                     break;
                 case LINKED_LIST:
                     LinkedList.MainLinkedList.run(in);
@@ -50,8 +60,9 @@ public class MainApp {
         System.out.println("1  Array Operations");
         System.out.println("2  Stack Operations");
         System.out.println("3  Queue Operations");
-        System.out.println("4  LinkedList Operations");
-
+        System.out.println("4  CQueue Operations");
+        System.out.println("5  QueueLinkedList Operations");
+        System.out.println("6  LinkedList Operations");
         System.out.println("0  Exit Program");
         System.out.println("==============================");
         System.out.print("👉 Please enter your choice: ");

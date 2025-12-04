@@ -13,8 +13,7 @@ enum QUEUE_OPERATIONS {
     DEFAULT
 }
 
-public class MainQueue {
-
+public class MainCQueue {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         run(in);
@@ -34,37 +33,37 @@ public class MainQueue {
             return;
         }
 
-        Queue queueOne = new Queue(size);
-        printQueueMenu();
+        CQueue cQueueOne = new CQueue(size);
+        printCQueueMenu();
         int choice;
         while ((choice = in.nextInt()) != 0) {
 
             switch (options.getOrDefault(choice, QUEUE_OPERATIONS.DEFAULT)) {
                 case ENQUEUE:
                     System.out.print("Enter item: ");
-                    queueOne.enQueue(in.nextInt());
+                    cQueueOne.enQueue(in.nextInt());
                     break;
                 case DEQUEUE:
-                    System.out.print(queueOne.deQueue());
+                    System.out.print(cQueueOne.deQueue());
                     break;
                 case DISPLAY:
-                    queueOne.display();
+                    cQueueOne.display();
                     break;
                 case DELETE_ITEM:
                     System.out.print("Enter item To delete: ");
-                    queueOne.deleteItem(in.nextInt());
+                    cQueueOne.deleteItem(in.nextInt());
                     break;
                 default:
                     Messages.printInvalidOptionMessage();
                     break;
             }
-            printQueueMenu();
+            printCQueueMenu();
 
         }
 
     }
 
-    private static void printQueueMenu() {
+    private static void printCQueueMenu() {
         System.out.println("\nChoice Operation\n 1. ENQUEUE\n 2. DEQUEUE\n 3. DISPLAY\n 4. DELETE_ITEM\n 0. EXit\n");
     }
 }

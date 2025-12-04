@@ -41,7 +41,7 @@ public class MainDLList {
         int choice;
         printMenuOptions();
         while ((choice = in.nextInt()) != 0) {
-            in.nextLine(); // Consume newline left-over
+            in.nextLine();
 
             String name;
             String targetName;
