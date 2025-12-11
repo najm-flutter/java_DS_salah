@@ -10,6 +10,7 @@ enum ARRAY_OPERATIONS {
     ADD,
     DELETE,
     DELETE_ALL,
+    DELETE_AT,
     DISPLAY,
     DEFAULT
 }
@@ -43,7 +44,8 @@ public class MainArray2DG {
         twoDOptions.put(1, ARRAY_OPERATIONS.ADD);
         twoDOptions.put(2, ARRAY_OPERATIONS.DELETE);
         twoDOptions.put(3, ARRAY_OPERATIONS.DELETE_ALL);
-        twoDOptions.put(4, ARRAY_OPERATIONS.DISPLAY);
+        twoDOptions.put(4, ARRAY_OPERATIONS.DELETE_AT);
+        twoDOptions.put(5, ARRAY_OPERATIONS.DISPLAY);
 
         printArrayOperationsMenu();
         int choice;
@@ -51,8 +53,10 @@ public class MainArray2DG {
             switch (twoDOptions.getOrDefault(choice, ARRAY_OPERATIONS.DEFAULT)) {
                 case ADD:
                     for (int i = towDArr.length; i < row * col; i++) {
-                        System.out.print("Enter Item Number" + (i + 1) + ": ");
-                        towDArr.add(Methods.choiseTypeT(in));
+                        while (!towDArr.isFull()) {
+                            System.out.print("Enter Item Number" + (i + 1) + ": ");
+                            towDArr.add(Methods.choiseTypeT(in));
+                        }
                     }
                     break;
                 case DELETE:
@@ -62,6 +66,10 @@ public class MainArray2DG {
                 case DELETE_ALL:
                     System.out.println("Enter Item To Delete:");
                     towDArr.deleteAll(Methods.choiseTypeT(in));
+                    break;
+                case DELETE_AT:
+                    System.out.println("Enter index To Delete:");
+                    towDArr.deleteAt(in.nextInt());
                     break;
                 case DISPLAY:
                     towDArr.print();
@@ -81,6 +89,7 @@ public class MainArray2DG {
                 1. Add Items
                 2. Delete Item
                 3. Delete All Occurrences of Item
+                4. Delete At
                 4. Display
                 0. Exit
                               """);
