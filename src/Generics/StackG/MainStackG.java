@@ -69,7 +69,6 @@ public class MainStackG {
         printSTStackOptions();
         int choice;
         while ((choice = in.nextInt()) != 0) {
-
             switch (options.getOrDefault(choice, STACK_OPERATION.DEFAULT)) {
                 case PUSH:
                     System.out.print("Enter element:");
