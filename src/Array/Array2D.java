@@ -24,6 +24,7 @@ public class Array2D {
     public void add(double item) {
 
         if (isFull()) {
+            System.out.println("is full");
             return;
         }
         length++;
@@ -82,6 +83,32 @@ public class Array2D {
 
     }
 
+    public void deleteAt(int index) {
+        if (index < 0 || index > (length) - 1) {
+            System.out.println("error in index");
+            return;
+        }
+        int counter = 0;
+        int col = 0, row = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (counter == index) {
+                    counter++;
+                    continue;
+                }
+                if (col == arr[0].length) {
+                    col = 0;
+                    row++;
+                }
+                arr[row][col++] = arr[i][j];
+                counter++;
+
+            }
+        }
+        length--;
+
+    }
+
     public void deletewithShift(double item) {
 
         for (int i = 0; i < arr.length; i++) {
@@ -93,7 +120,6 @@ public class Array2D {
                             arr[i][j2] = arr[i][j2 + 1];
                         }
                         System.out.println(arr[i][arr[i].length - 1]);
-                        ;
                         arr[i][arr[i].length - 1] = 0;
                     }
 
