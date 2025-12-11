@@ -4,16 +4,16 @@ package Generics.ArrayG;
 public class Array1DG<T> {
      // احذف مع التكرار وخل القيمة الي بالمنتصف أو البداية أة او النهاية أو غيره
     // ADT Abstract Data Type : Data and thier operations under specific name
-    Object[] arr;
+    T[] arr;
     int length;
 
     Array1DG(int size) {
-        arr =  new Object[size];
+        arr = (T[])  new Object[size];
         length = 0;
     }
 
     Array1DG() {
-        arr =  new Object[10];
+        arr =  (T[]) new Object[10];
         length = 0;
     }
     
@@ -45,7 +45,7 @@ public class Array1DG<T> {
         for (int i = index; i < length - 1; i++) {
             arr[i] = arr[i + 1];
         }
-        arr[--length] = 0;
+        arr[--length] = null;
 
     }
 
@@ -57,7 +57,7 @@ public class Array1DG<T> {
         for (int i = index; i < length - 1; i++) {
             arr[i] = arr[i + 1];
         }
-        arr[--length] = 0;
+        arr[--length] = null;
     }
 
     public void deleteAt(int index) {
@@ -69,7 +69,7 @@ public class Array1DG<T> {
         for (int i = index; i < length - 1; i++) {
             arr[i] = arr[i + 1];
         }
-        arr[--length] = 0;
+        arr[--length] = null;
     }
 
     public void deleteAll(T item) {

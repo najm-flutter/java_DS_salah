@@ -15,7 +15,6 @@ public class Methods {
                     4. Character
                     5. Boolean
                     6. Student
-                    7.
                     0. Default 0
 
                 """);

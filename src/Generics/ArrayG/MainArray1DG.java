@@ -37,7 +37,7 @@ public class MainArray1DG {
             return;
         }
 
-        Array1DG onDArr = new Array1DG(size);
+        Array1DG<Object> onDArr = new Array1DG<>(size);
 
         HashMap<Integer, ARRAY_OPERATIONS> oneDOptions = new HashMap<>();
         oneDOptions.put(1, ARRAY_OPERATIONS.ADD);
