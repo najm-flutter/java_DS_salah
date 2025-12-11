@@ -136,7 +136,7 @@ public class LinkedListDS {
             return;
         }
         Node tmp2 = tmp.next;
-        tmp.next = tmp.next.next;
+        tmp.next = tmp.next.next == null ? null : tmp.next.next;
         tmp2.next = null;
 
     }
