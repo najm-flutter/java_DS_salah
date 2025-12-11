@@ -51,7 +51,6 @@ public class MainStack {
             printMenuOptions();
 
         }
-        in.close();
     }
 
     static void staticStack(Scanner in, HashMap<Integer, STACK_OPERATION> options) {

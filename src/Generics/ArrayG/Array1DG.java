@@ -1,21 +1,28 @@
-package Array;
+package Generics.ArrayG;
 
-public class Array1D {
-    // احذف مع التكرار وخل القيمة الي بالمنتصف أو البداية أة او النهاية أو غيره
+
+public class Array1DG<T> {
+     // احذف مع التكرار وخل القيمة الي بالمنتصف أو البداية أة او النهاية أو غيره
     // ADT Abstract Data Type : Data and thier operations under specific name
-    double[] arr;
+    Object[] arr;
     int length;
-    
-    Array1D(int size) {
-        arr = new double[size];
+
+    Array1DG(int size) {
+        arr =  new Object[size];
         length = 0;
     }
+
+    Array1DG() {
+        arr =  new Object[10];
+        length = 0;
+    }
+    
 
     boolean isFull() {
         return length == arr.length;
     }
 
-    public void add(double item) {
+    public void add(T item) {
         if (isFull()) {
             System.err.println("IS full");
             return;
@@ -23,14 +30,14 @@ public class Array1D {
         arr[length++] = item;
     }
 
-    public void addAll(double[] a) {
-        for (double d : a) {
+    public void addAll(T[] a) {
+        for (T d : a) {
             add(d);
         }
 
     }
 
-    public void delete(double item) {
+    public void delete(T item) {
         int index = search(item);
         if (index == -1) {
             return;
@@ -42,7 +49,7 @@ public class Array1D {
 
     }
 
-    public void deleteLast(double item) {
+    public void deleteLast(T item) {
         int index = searchLast(item);
         if (index == -1) {
             return;
@@ -65,10 +72,10 @@ public class Array1D {
         arr[--length] = 0;
     }
 
-    public void deleteAll(double item) {
+    public void deleteAll(T item) {
         int start = 0;
         for (int i = 0; i < length; i++) {
-            if (arr[i] == item) {
+            if (arr[i].equals(item)) {
                 continue;
             }
             arr[start++] = arr[i];
@@ -79,11 +86,11 @@ public class Array1D {
     }
 
     // 1,4,2,4,5,6
-    public void deleteAllSkipFirst(double item) {
+    public void deleteAllSkipFirst(T item) {
         boolean isFirst = false;
         int start = 0;
         for (int i = 0; i < length; i++) {
-            if (arr[i] == item) {
+            if (arr[i].equals(item)) {
                 if (!isFirst) {
                     arr[start++] = item;
                     isFirst = !isFirst;
@@ -97,11 +104,11 @@ public class Array1D {
 
     }
 
-    public void deleteAllSkipLast(double item) {
+    public void deleteAllSkipLast(T item) {
         boolean isLast = false;
 
         for (int i = arr.length - 1; i >= 0; i--) {
-            if (arr[i] == item) {
+            if (arr[i].equals(item)) {
                 if (!isLast) {
                     isLast = true;
                     continue;
@@ -111,11 +118,11 @@ public class Array1D {
         }
     }
 
-    public void deleteJump(double item) {
+    public void deleteJump(T item) {
         boolean delete = false;
         int start = 0;
         for (int i = 0; i < length; i++) {
-            if (arr[i] == item) {
+            if (arr[i].equals(item)) {
                 if (delete) {
                     delete = !delete;
                     continue;
@@ -132,9 +139,9 @@ public class Array1D {
 
     }
 
-    public int search(double item) {
+    public int search(T item) {
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == item) {
+            if (arr[i].equals(item)) {
                 return i;
             }
         }
@@ -142,9 +149,9 @@ public class Array1D {
 
     }
 
-    public int searchLast(double item) {
+    public int searchLast(T item) {
         for (int i = arr.length - 1; i >= 0; i--) {
-            if (arr[i] == item) {
+            if (arr[i].equals(item)) {
                 return i;
             }
         }
@@ -164,5 +171,6 @@ public class Array1D {
         for (int i = 0; i < length; i++) {
             System.out.print(arr[i] + ", ");
         }
-    }
+    } 
 }
+
