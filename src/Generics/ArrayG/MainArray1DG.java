@@ -55,7 +55,7 @@ public class MainArray1DG {
         while ((choice = in.nextInt()) != 0) {
             switch (oneDOptions.getOrDefault(choice, ARRAY_OPERATIONS.DEFAULT)) {
                 case ADD:
-                    for (int i = onDArr.length; i < size; i++) {
+                    while (onDArr.isFull()) {
                         System.out.print("Enter Item " + (onDArr.length + 1) + ": ");
                         onDArr.add(Methods.choiseTypeT(in));
                     }
