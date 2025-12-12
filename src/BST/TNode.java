@@ -5,6 +5,7 @@ public class TNode {
     private TNode left;
     private TNode rigth;
     private TNode pref;
+    int count = 1;
 
     public TNode getPref() {
         return pref;
@@ -53,6 +54,11 @@ public class TNode {
 
     public boolean isFree() {
         return (!hasLift() && !hasRight());
+    }
+
+    @Override
+    public String toString() {
+        return "[" + data + ":" + count + "]";
     }
 
 }

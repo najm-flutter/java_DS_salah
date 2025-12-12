@@ -72,7 +72,7 @@ public class Stack {
 
     private void print() {
         for (int i = top; i >= 0; i--) {
-            System.out.print(arr[top] + ",");
+            System.out.print(arr[i] + ",");
         }
     }
 

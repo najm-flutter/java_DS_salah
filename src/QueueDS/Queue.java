@@ -10,7 +10,7 @@ public class Queue {
     }
 
     boolean isEmpty() {
-        return front == rear;
+        return front == -1;
     }
 
     boolean isFull() {
