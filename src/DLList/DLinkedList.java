@@ -92,7 +92,7 @@ public class DLinkedList {
     public void display() {
         DNode tmp = Head;
         while (tmp != null) {
-            System.out.print(tmp.getDataStudent().getName() + "->");
+            System.out.print(tmp.getDataStudent().getName() + ": " + tmp.getDataStudent().getID() + " ->");
             tmp = tmp.getNext();
         }
         System.out.print("Null");

@@ -61,14 +61,14 @@ public class MainDLList {
                 case ADD_AFTER:
                     System.out.print("Enter student name to add: ");
                     name = in.nextLine();
-                    System.out.print("Enter the name of the student to add after: ");
+                    System.out.print("Enter the id of the student to add after: ");
                     id = in.nextLong();
                     dLinkedList.addAfter(new DNode(new Student(name)), id);
                     break;
                 case ADD_BEFORE:
                     System.out.print("Enter student name to add: ");
                     name = in.nextLine();
-                    System.out.print("Enter the name of the student to add before: ");
+                    System.out.print("Enter the id of the student to add before: ");
                     id = in.nextLong();
                     dLinkedList.addBefor(new DNode(new Student(name)), id);
                     break;
@@ -91,12 +91,12 @@ public class MainDLList {
                     dLinkedList.deleteAt(pos);
                     break;
                 case DELETE_AFTER:
-                    System.out.print("Enter the name of the student to delete the node after it: ");
+                    System.out.print("Enter the id of the student to delete the node after it: ");
                     id = in.nextLong();
                     dLinkedList.deleteAfter(id);
                     break;
                 case DELETE_BEFORE:
-                    System.out.print("Enter the name of the student to delete the node before it: ");
+                    System.out.print("Enter the id of the student to delete the node before it: ");
                     id = in.nextLong();
                     dLinkedList.deleteBefore(id);
                     break;
