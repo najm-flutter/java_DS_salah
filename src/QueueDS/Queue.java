@@ -4,16 +4,16 @@ public class Queue {
     int[] elements;
     int front, rear;
 
-    Queue(int size) {
+    public Queue(int size) {
         elements = new int[size];
         front = rear = -1;
     }
 
-    boolean isEmpty() {
+    public boolean isEmpty() {
         return front == -1;
     }
 
-    boolean isFull() {
+    public boolean isFull() {
         return rear == elements.length - 1;
     }
 
@@ -73,6 +73,31 @@ public class Queue {
 
             }
         }
+    }
+
+    public boolean deleteItemHelper(int val) {
+        if (isEmpty()) {
+            System.out.println("is Empty\n");
+            return false;
+        }
+        boolean isFound = false;
+        for (int i = front; i <= rear; i++) {
+            if (elements[i] == val) {
+                isFound = true;
+                for (int j = i; j < rear; j++) {
+                    elements[j] = elements[j + 1];
+                }
+                elements[rear--] = 0;
+                break;
+
+            }
+        }
+        return isFound;
+    }
+
+    public void deleteAll(int val) {
+        while (deleteItemHelper(val))
+            ;
     }
 
 }

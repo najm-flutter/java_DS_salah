@@ -5,14 +5,14 @@ public class Array2D {
     // احذف مع التكرار وخل القيمة الي بالمنتصف أو البداية أة او النهاية أو غيره
     // ADT Abstract Data Type : Data and thier operations under specific name
     double[][] arr;
-    int length;
+    public int length;
 
-    Array2D(int size) {
+    public Array2D(int size) {
         arr = new double[size][size];
         length = 0;
     }
 
-    Array2D(int row, int col) {
+    public Array2D(int row, int col) {
         arr = new double[row][col];
         length = 0;
     }
@@ -59,6 +59,30 @@ public class Array2D {
         }
         if (isFound) {
             length--;
+        }
+
+    }
+
+    public void deleteWithSkipAt(double item, int at) {
+
+        int row = 0, col = 0;
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] == item) {
+                    count++;
+                    if (count != at) {
+                        length--;
+                        continue;
+                    }
+
+                }
+                if (col == arr[0].length) {
+                    col = 0;
+                    row++;
+                }
+                arr[row][col++] = arr[i][j];
+            }
         }
 
     }
@@ -196,19 +220,19 @@ public class Array2D {
             return;
         }
 
-        for (int i = len; i < length; i++) {
+        for (int i = len - 1; i < length - 1; i++) {
             arr[getRow(i)][getCol(i)] = arr[getRow(i + 1)][getCol(i + 1)];
         }
         arr[getRow(length)][getCol(length)] = 0;
         length--;
     }
 
-    public int getRow(int size) {
-        return Math.abs(size - 1) / arr.length;
+    public int getRow(int index) {
+        return Math.abs(index) / arr.length;
     }
 
-    public int getCol(int size) {
-        return (size - 1) % arr[0].length;
+    public int getCol(int index) {
+        return (index) % arr[0].length;
 
     }
 
@@ -224,6 +248,14 @@ public class Array2D {
         }
 
         return len;
+    }
+
+    public double getAt(int col, int row) {
+        return arr[col][row];
+    }
+
+    public void rest() {
+        length = 0;
     }
 
 }

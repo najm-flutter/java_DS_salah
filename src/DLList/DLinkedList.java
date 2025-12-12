@@ -56,10 +56,10 @@ public class DLinkedList {
         Tail = m;
     }
 
-    public DNode find(String name) {
+    public DNode find(Long name) {
         DNode t = Head;
         while (t != null) {
-            if (t.getDataStudent().getName().equals(name)) {
+            if (t.getDataStudent().getID() == (name)) {
                 break;
             }
             t = t.getNext();
@@ -67,7 +67,7 @@ public class DLinkedList {
         return t;
     }
 
-    public void addAfter(DNode mn, String id) {
+    public void addAfter(DNode mn, Long id) {
         if (isEmpty()) {
             System.out.println("The list is empty");
             return;
@@ -98,7 +98,7 @@ public class DLinkedList {
         System.out.print("Null");
     }
 
-    public void addBefor(DNode node, String name) {
+    public void addBefor(DNode node, Long name) {
         if (isEmpty()) {
             System.out.println("The list is empty");
             return;
@@ -188,7 +188,7 @@ public class DLinkedList {
         tmp.setprev(null);
     }
 
-    public void deleteAfter(String name) {
+    public void deleteAfter(Long name) {
         if (isEmpty()) {
             System.out.println("The list is empty");
             return;
@@ -213,7 +213,7 @@ public class DLinkedList {
         tmp.setprev(null);
     }
 
-    public void deleteBefore(String name) {
+    public void deleteBefore(Long name) {
         if (isEmpty()) {
             System.out.println("The list is empty");
             return;

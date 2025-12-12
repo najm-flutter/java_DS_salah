@@ -68,4 +68,8 @@ public class CQueue {
         rear = r;
     }
 
+    public int getSize() {
+        return (rear - front + elements.length) % elements.length;
+    }
+
 }
