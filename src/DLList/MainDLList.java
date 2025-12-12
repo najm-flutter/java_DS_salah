@@ -44,7 +44,7 @@ public class MainDLList {
             in.nextLine();
 
             String name;
-            String targetName;
+            Long id;
             int pos;
 
             switch (options.getOrDefault(choice, DLL_OPERATIONS.DEFAULT)) {
@@ -62,15 +62,15 @@ public class MainDLList {
                     System.out.print("Enter student name to add: ");
                     name = in.nextLine();
                     System.out.print("Enter the name of the student to add after: ");
-                    targetName = in.nextLine();
-                    dLinkedList.addAfter(new DNode(new Student(name)), targetName);
+                    id = in.nextLong();
+                    dLinkedList.addAfter(new DNode(new Student(name)), id);
                     break;
                 case ADD_BEFORE:
                     System.out.print("Enter student name to add: ");
                     name = in.nextLine();
                     System.out.print("Enter the name of the student to add before: ");
-                    targetName = in.nextLine();
-                    dLinkedList.addBefor(new DNode(new Student(name)), targetName);
+                    id = in.nextLong();
+                    dLinkedList.addBefor(new DNode(new Student(name)), id);
                     break;
                 case ADD_AT:
                     System.out.print("Enter student name to add: ");
@@ -92,13 +92,13 @@ public class MainDLList {
                     break;
                 case DELETE_AFTER:
                     System.out.print("Enter the name of the student to delete the node after it: ");
-                    targetName = in.nextLine();
-                    dLinkedList.deleteAfter(targetName);
+                    id = in.nextLong();
+                    dLinkedList.deleteAfter(id);
                     break;
                 case DELETE_BEFORE:
                     System.out.print("Enter the name of the student to delete the node before it: ");
-                    targetName = in.nextLine();
-                    dLinkedList.deleteBefore(targetName);
+                    id = in.nextLong();
+                    dLinkedList.deleteBefore(id);
                     break;
                 case DISPLAY:
                     dLinkedList.display();
