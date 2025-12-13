@@ -84,18 +84,19 @@ public class BSTtree {
         if (node == null) {
             return;
         }
+        System.out.println(node);
         displayInOrder(node.getLeft());
         displayInOrder(node.getRigth());
-        System.out.println(node);
     }
 
     public void displayPostOrder(TNode node) {
         if (node == null) {
             return;
         }
-        System.out.println(node);
         displayInOrder(node.getLeft());
         displayInOrder(node.getRigth());
+        System.out.println(node);
+
     }
 
 }
