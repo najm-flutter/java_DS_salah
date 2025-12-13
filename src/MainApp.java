@@ -9,6 +9,7 @@ enum INSERT_TYPES {
     STACK,
     QUEUE,
     CQUEUE,
+    TREE,
     QUEUELINKED,
     DEFUALT
 }
@@ -23,6 +24,7 @@ public class MainApp {
         options.put(5, INSERT_TYPES.CQUEUE);
         options.put(6, INSERT_TYPES.QUEUELINKED);
         options.put(7, INSERT_TYPES.LINKED_LIST);
+        options.put(8, INSERT_TYPES.TREE);
 
         Scanner in = new Scanner(System.in);
         int choice;
@@ -49,6 +51,10 @@ public class MainApp {
                     break;
                 case LINKED_LIST:
                     LinkedList.MainLinkedList.run(in);
+                    break;
+                case TREE:
+                    BST.MainTree.run(in);
+                    break;
                 default:
                     Messages.printInvalidOptionMessage();
                     break;
@@ -69,6 +75,7 @@ public class MainApp {
         System.out.println("5  CQueue Operations");
         System.out.println("6  QueueLinkedList Operations");
         System.out.println("7  LinkedList Operations");
+        System.out.println("8  Tree Operations");
         System.out.println("0  Exit Program");
         System.out.println("==============================");
         System.out.print("👉 Please enter your choice: ");
