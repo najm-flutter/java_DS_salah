@@ -53,6 +53,10 @@ public class Queue {
     }
 
     public void display() {
+        if (isEmpty()) {
+            System.out.println("is Empty");
+            return;
+        }
         for (int i = front; i <= rear; i++) {
             System.out.print(elements[i] + ",");
         }
