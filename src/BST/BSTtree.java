@@ -63,12 +63,15 @@ public class BSTtree {
     }
 
     public void display() {
+        System.out.println("InOrder");
         displayInOrder(root);
-        System.out.println("-------");
+        System.out.println("---------");
+        System.out.println("PreOrder");
         displayPreOrder(root);
-        System.out.println("-------");
-
+        System.out.println("---------");
+        System.out.println("PostOrder");
         displayPostOrder(root);
+
     }
 
     public void displayInOrder(TNode node) {
