@@ -11,18 +11,55 @@ public class BSTtree {
         root = insertHelper(root, data);
     }
 
-    public TNode insertHelper(TNode root, int data) {
-        if (root == null) {
+    public TNode insertHelper(TNode node, int data) {
+        if (node == null) {
             return new TNode(data);
         }
-        if (root.getData() < data) {
-            root.setRigth(insertHelper(root.getRigth(), data));
+        if (node.getData() < data) {
+            node.setRigth(insertHelper(node.getRigth(), data));
         }
-        if (root.getData() > data) {
-            root.setLeft(insertHelper(root.getLeft(), data));
-        } else if (root.getData() == data)
-            root.count++;
-        return root;
+        if (node.getData() > data) {
+            node.setLeft(insertHelper(node.getLeft(), data));
+        } else if (node.getData() == data)
+            node.count++;
+        return node;
+    }
+
+    public void deleteNode(int data) {
+        root = deleteHeleper(root, data);
+    }
+
+    public TNode deleteHeleper(TNode node, int data) {
+        if (node == null) {
+            return null;
+        }
+        if (node.getData() < data) {
+            node.setRigth(deleteHeleper(node.getRigth(), data));
+        } else if (node.getData() > data) {
+            node.setLeft(deleteHeleper(node.getLeft(), data));
+        } else if (node.count > 1) {
+            node.count--;
+        } else if (node.hasLift() && node.hasRight()) {
+            int minData = min(node.getRigth());
+            node.setData(minData);
+            node.setRigth(deleteHeleper(node.getRigth(), minData));
+        } else if (node.hasLift() || node.hasRight()) {
+            TNode deleteNode = node;
+            node = node.hasLift() ? node.getLeft() : node.getRigth();
+            deleteNode = null;
+        } else {
+            node = null;
+        }
+
+        return node;
+    }
+
+    public int min(TNode node) {
+        if (!node.hasLift()) {
+            return node.getData();
+        }
+        return min(node.getLeft());
+
     }
 
     public void display() {
@@ -34,31 +71,31 @@ public class BSTtree {
         displayPostOrder(root);
     }
 
-    public void displayInOrder(TNode root) {
-        if (root == null) {
+    public void displayInOrder(TNode node) {
+        if (node == null) {
             return;
         }
-        displayInOrder(root.getLeft());
-        System.out.println(root);
-        displayInOrder(root.getRigth());
+        displayInOrder(node.getLeft());
+        System.out.println(node);
+        displayInOrder(node.getRigth());
     }
 
-    public void displayPreOrder(TNode root) {
-        if (root == null) {
+    public void displayPreOrder(TNode node) {
+        if (node == null) {
             return;
         }
-        displayInOrder(root.getLeft());
-        displayInOrder(root.getRigth());
-        System.out.println(root);
+        displayInOrder(node.getLeft());
+        displayInOrder(node.getRigth());
+        System.out.println(node);
     }
 
-    public void displayPostOrder(TNode root) {
-        if (root == null) {
+    public void displayPostOrder(TNode node) {
+        if (node == null) {
             return;
         }
-        System.out.println(root);
-        displayInOrder(root.getLeft());
-        displayInOrder(root.getRigth());
+        System.out.println(node);
+        displayInOrder(node.getLeft());
+        displayInOrder(node.getRigth());
     }
 
 }
