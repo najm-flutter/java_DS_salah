@@ -11,7 +11,7 @@ public class LinkedListDS {
         length = 0;
     }
 
-    public void addFirst(int data) {
+    public void addFirst(String data) {
         Node new_node = new Node(data);
         length++;
         new_node.next = head;
@@ -19,7 +19,7 @@ public class LinkedListDS {
 
     }
 
-    public void addLast(int data) {
+    public void addLast(String data) {
         length++;
         Node new_Node = new Node(data);
         if (head == null) {
@@ -36,11 +36,11 @@ public class LinkedListDS {
 
     }
 
-    public int deleteFirst() {
+    public String deleteFirst() {
         if (head == null) {
-            return -1;
+            return "-1";
         }
-        int tmp = head.data;
+        String tmp = head.data;
         head = head.next;
         return tmp;
     }
@@ -93,10 +93,10 @@ public class LinkedListDS {
 
     }
 
-    public Node find(double data) {
+    public Node find(String data) {
         Node i = head;
         for (i = head; i != null; i = i.next) {
-            if (i.data == data) {
+            if (i.data.equals(data)) {
                 return i;
             }
         }
@@ -115,6 +115,7 @@ public class LinkedListDS {
         }
 
         if (index == 0) {
+            length--;
             head = head.next;
             return;
 
@@ -138,6 +139,14 @@ public class LinkedListDS {
         Node tmp2 = tmp.next;
         tmp.next = tmp.next.next == null ? null : tmp.next.next;
         tmp2.next = null;
+
+    }
+
+    public void deleteBtweenPos(String item, int p1, int p2) {
+        for (int i = p1 + 1; i < p2; i++) {
+            deleteAt(p1+1);
+        }
+        // 1->4
 
     }
 }

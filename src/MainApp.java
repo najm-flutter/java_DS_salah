@@ -25,7 +25,7 @@ public class MainApp {
         options.put(6, INSERT_TYPES.QUEUELINKED);
         options.put(7, INSERT_TYPES.LINKED_LIST);
         options.put(8, INSERT_TYPES.TREE);
-
+        Messages.homePrint();
         Scanner in = new Scanner(System.in);
         int choice;
         printMenuOptions();

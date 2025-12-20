@@ -5,8 +5,8 @@ public class Array1D {
     // ADT Abstract Data Type : Data and thier operations under specific name
     double[] arr;
     int length;
-    
-    Array1D(int size) {
+
+    public Array1D(int size) {
         arr = new double[size];
         length = 0;
     }
@@ -164,5 +164,31 @@ public class Array1D {
         for (int i = 0; i < length; i++) {
             System.out.print(arr[i] + ", ");
         }
+        for (int i = length; i < arr.length; i++) {
+            System.out.print(0 + ", ");
+        }
     }
+
+    public void deleteFHalf(double item) {
+
+        int start = 0;
+        for (int i = 0; i < length; i++) {
+            if (arr[i] == item) {
+
+                if (i <= 4) {
+                    arr[start++] = item;
+                    continue;
+                } else {
+                    System.out.println("done");
+                    continue;
+                }
+            }
+            arr[start++] = arr[i];
+
+        }
+        length = start;
+        System.out.println(start);
+    }
+
+    
 }

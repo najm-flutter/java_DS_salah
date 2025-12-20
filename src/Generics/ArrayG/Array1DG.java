@@ -1,22 +1,20 @@
 package Generics.ArrayG;
 
-
 public class Array1DG<T> {
-     // احذف مع التكرار وخل القيمة الي بالمنتصف أو البداية أة او النهاية أو غيره
+    // احذف مع التكرار وخل القيمة الي بالمنتصف أو البداية أة او النهاية أو غيره
     // ADT Abstract Data Type : Data and thier operations under specific name
     T[] arr;
     int length;
 
-    Array1DG(int size) {
-        arr = (T[])  new Object[size];
+    public Array1DG(int size) {
+        arr = (T[]) new Object[size];
         length = 0;
     }
 
-    Array1DG() {
-        arr =  (T[]) new Object[10];
+    public Array1DG() {
+        arr = (T[]) new Object[10];
         length = 0;
     }
-    
 
     boolean isFull() {
         return length == arr.length;
@@ -171,6 +169,15 @@ public class Array1DG<T> {
         for (int i = 0; i < length; i++) {
             System.out.print(arr[i] + ", ");
         }
-    } 
-}
+    }
 
+    public void printIf() {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] instanceof Integer) {
+                sum += (int) arr[i];
+            }
+        }
+        System.out.println(sum);
+    }
+}
